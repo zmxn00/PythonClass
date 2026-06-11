@@ -1,0 +1,42 @@
+# 소득에 따라 적용할 세율을 결정하고 세금을 계산하는 함수
+def calculate_tax(income):
+    # 소득 구간별 세율 적용
+    if income <= 14000000:
+        rate = 0.06
+    elif income <= 50000000:
+        rate = 0.15
+    elif income <= 88000000:
+        rate = 0.24
+    elif income <= 150000000:
+        rate = 0.35
+    elif income <= 300000000:
+        rate = 0.38
+    elif income <= 500000000:
+        rate = 0.40
+    elif income <= 1000000000:
+        rate = 0.42
+    else:
+        rate = 0.45
+
+    # 세금 계산
+    tax = income * rate
+
+    return tax, rate
+
+
+def main():
+    # 연간 소득 입력받기
+    income = int(input("연간 소득을 입력하세요(원): "))
+
+    # 세금 및 적용 세율 계산
+    tax, rate = calculate_tax(income)
+
+    print("\n===== 세금 계산 결과 =====")
+    print(f"연간 소득 : {income:,}원")
+    print(f"적용 세율 : {rate * 100:.0f}%")
+    print(f"납부 세금 : {tax:,.0f}원")
+    print(f"세후 소득 : {income - tax:,.0f}원")
+
+
+if __name__ == "__main__":
+    main()
